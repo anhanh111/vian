@@ -1,10 +1,18 @@
-<?php get_header(); ?>
-<main>
-<section class="hero"><h1>Hero Section</h1></section>
-<section class="about"><h2>Về chúng tôi</h2><p>...</p></section>
-<section class="menu"><h2>Ẩm thực</h2></section>
-<section class="gallery"><h2>Không gian nhà hàng</h2></section>
-<section class="media"><h2>Truyền thông</h2></section>
-<section class="testimonials"><h2>Cảm nhận khách hàng</h2></section>
-</main>
+<?php
+/* Template Name: Front Page */
+get_header(); 
+?>
+
+<!-- Banner -->
+<section class="home-banner">
+  <div class="banner-slider">
+    <div class="banner-slide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner1.jpg');"></div>
+    <div class="banner-slide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner2.jpg');"></div>
+    <div class="banner-slide" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner3.jpg');"></div>
+  </div>
+
+  <!-- Nút chấm tròn -->
+  <div class="banner-dots"></div>
+</section>
+
 <?php get_footer(); ?>
