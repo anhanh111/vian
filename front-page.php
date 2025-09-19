@@ -1,22 +1,31 @@
 <?php
 /* Template Name: Front Page */
-get_header(); 
+
+get_header();
+
+// Lấy ID của trang Giới thiệu (ở đây là 52)
+$about_id = 52;
+
+// Lấy dữ liệu từ ACF của trang Giới thiệu
+$bg       = get_field('intro_background', $about_id);
+$title    = get_field('banner_title', $about_id);
+$subtitle = get_field('banner_subtitle', $about_id);
+$desc     = get_field('banner_description', $about_id);
 ?>
 
-<!-- Banner (gọi từ plugin qua shortcode) -->
-<?php echo do_shortcode('[vian_banner]'); ?>
-
 <!-- Section Giới thiệu -->
-<section class="section-intro" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/about.jpg');">
+<section class="section-intro" 
+  style="background-image: url('<?php echo ($bg && isset($bg['url'])) ? esc_url($bg['url']) : get_template_directory_uri().'/assets/images/about.jpg'; ?>');">
+  
   <div class="intro-overlay"></div>
   <div class="intro-content">
-    <h2>Vị An — Cơm ngon tròn vị</h2>
-    <h3>Nhà hàng cơm Việt, quán cơm gia đình ngon tại Hà Nội</h3>
-    <p>Tại Vị An, triết lý của chúng tôi rất đơn giản: chia sẻ hương vị và văn hóa thưởng thức cơm Việt tới tất cả mọi người...</p>
-    <p>Không gian tại nhà hàng cơm Vị An được lấy cảm hứng từ những giá trị truyền thống...</p>
+    <h2><?php echo $title ? esc_html($title) : 'Tiêu đề mặc định'; ?></h2>
+    <h3><?php echo $subtitle ? esc_html($subtitle) : 'Phụ đề mặc định'; ?></h3>
+    <p><?php echo $desc ? esc_html($desc) : 'Mô tả mặc định'; ?></p>
   </div>
 </section>
 
+<!-- Section Ẩm Thực -->
 <section class="section-food" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/backgound.png');">
   <div class="food-overlay"></div>
   <div class="food-container">
@@ -93,8 +102,5 @@ get_header();
     <a href="#" class="btn-viewmore">XEM THÊM</a>
   </div>
 </section>
-
-
-
 
 <?php get_footer(); ?>
