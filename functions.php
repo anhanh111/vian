@@ -12,7 +12,7 @@ function vian_setup() {
         'flex-width'  => true,
         'flex-height' => true,
     ]);
-    
+
     // Đăng ký menu
     register_nav_menus([
         'primary' => __('Primary Menu','vian-custom')
@@ -40,12 +40,12 @@ function vian_scripts() {
         '6.5.0'
     );
 
-    // CSS chính (style.css) – chống cache bằng filemtime
+    // CSS chính (thay bằng main.css trong assets) – chống cache bằng filemtime
     wp_enqueue_style(
         'vian-style',
-        get_template_directory_uri() . '/style.css',
+        get_template_directory_uri() . '/assets/css/main.css',
         array(),
-        filemtime(get_template_directory() . '/style.css')
+        filemtime(get_template_directory() . '/assets/css/main.css')
     );
 
     // JS chính (main.js) – chống cache bằng filemtime
@@ -73,34 +73,15 @@ add_filter('get_custom_logo', function($html) {
 // Đăng ký khu vực widget Footer
 // ==========================
 function vian_register_footer_widgets() {
-    // Cột 1
-    register_sidebar(array(
-        'name'          => __('Footer Cột 1', 'vian'),
-        'id'            => 'footer-1',
-        'before_widget' => '<div class="footer-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="footer-title">',
-        'after_title'   => '</h3>',
-    ));
-
-    // Cột 2
-    register_sidebar(array(
-        'name'          => __('Footer Cột 2', 'vian'),
-        'id'            => 'footer-2',
-        'before_widget' => '<div class="footer-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="footer-title">',
-        'after_title'   => '</h3>',
-    ));
-
-    // Cột 3
-    register_sidebar(array(
-        'name'          => __('Footer Cột 3', 'vian'),
-        'id'            => 'footer-3',
-        'before_widget' => '<div class="footer-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="footer-title">',
-        'after_title'   => '</h3>',
-    ));
+    for ($i = 1; $i <= 3; $i++) {
+        register_sidebar(array(
+            'name'          => sprintf(__('Footer Cột %d', 'vian'), $i),
+            'id'            => 'footer-' . $i,
+            'before_widget' => '<div class="footer-widget">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="footer-title">',
+            'after_title'   => '</h3>',
+        ));
+    }
 }
 add_action('widgets_init', 'vian_register_footer_widgets');

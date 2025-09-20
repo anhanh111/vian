@@ -1,26 +1,39 @@
 <footer class="site-footer">
   <div class="footer-container">
+
     <div class="footer-column">
-      <?php if ( is_active_sidebar('footer-1') ) : ?>
-          <?php dynamic_sidebar('footer-1'); ?>
-      <?php endif; ?>
+      <h3><?php the_field('footer_col1_title'); ?></h3>
+      <div><?php the_field('footer_col1_content'); ?></div>
     </div>
 
     <div class="footer-column">
-      <?php if ( is_active_sidebar('footer-2') ) : ?>
-          <?php dynamic_sidebar('footer-2'); ?>
-      <?php endif; ?>
+      <h3><?php the_field('footer_col2_title'); ?></h3>
+      <div><?php the_field('footer_col2_content'); ?></div>
     </div>
 
     <div class="footer-column">
-      <?php if ( is_active_sidebar('footer-3') ) : ?>
-          <?php dynamic_sidebar('footer-3'); ?>
-      <?php endif; ?>
+      <h3><?php the_field('footer_col3_title'); ?></h3>
+      <div class="social-icons">
+        <a href="https://facebook.com" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://youtube.com" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com" target="_blank">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+      <div><?php the_field('footer_col3_content'); ?></div>
     </div>
+
   </div>
 
   <div class="footer-bottom">
-    <p>Copyright © <?php echo date('Y'); ?> <strong>Vị An – Cơm ngon tròn vị</strong>. All rights reserved.</p>
-    <p><a href="#">Bảo mật thông tin</a> | <a href="#">Liên hệ</a></p>
+    <p><?php the_field('footer_bottom_text'); ?></p>
   </div>
 </footer>
+
